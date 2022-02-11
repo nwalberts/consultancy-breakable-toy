@@ -9,6 +9,8 @@ import "./boot.js";
 import { config } from "./config.js";
 import { addMiddlewares } from "./middlewares/addMiddlewares.js";
 import { rootRouter } from "./routes/rootRouter.js";
+import errorHandler from "errorhandler";
+import handleErrors from "./middlewares/handleErrors.js"
 
 const __filename = fileURLToPath(import.meta.url);
 
@@ -26,7 +28,12 @@ app.use(
 );
 app.use(bodyParser.json());
 addMiddlewares(app);
+
 app.use(rootRouter);
+console.log()
+app.use(handleErrors)
+
+
 app.listen(config.web.port, config.web.host, () => {
   // eslint-disable-next-line no-console
   console.log("Server is listening on port " + config.web.port);
