@@ -7,6 +7,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { TopBar } from "./layout/TopBar";
+import { SquidList } from "./squids/SquidList";
 import "../style/main.pcss";
 
 const App = () => {
@@ -26,7 +27,7 @@ const App = () => {
         <TopBar />
         <Switch>
           <Route exact path="/">
-            <h2>Hello from react</h2>
+            <SquidList />
           </Route>
         </Switch>
       </Router>

@@ -1,18 +1,18 @@
-const Model = requre("./Model")
+const Model = require("./Model")
 
 class Squid extends Model {
   static get tableName(){
     return "squids"
   }
 
-  statis get jsonSchema(){
+  static get jsonSchema(){
     return {
        type: "object",
-       required: ["name", "species", "victories"], 
+       required: ["name", "species"], 
        properties: {
          name: { type: "string", minLength: 1 },
          species: { type: "string", minLength: 1 },
-         victories: { type: "string" },
+         experiencePoints: { type: "integer" },
          specialPower: {type: "string"}
         //  array of possible values, maybe rails enum
        }
