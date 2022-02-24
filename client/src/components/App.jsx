@@ -6,6 +6,7 @@ import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import { Home } from "./home/Home.jsx";
 import { TopBar } from "./layout/TopBar";
 import { SquidList } from "./squids/SquidList";
 import "../style/main.pcss";
@@ -27,6 +28,9 @@ const App = () => {
         <TopBar />
         <Switch>
           <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/squids">
             <SquidList />
           </Route>
         </Switch>

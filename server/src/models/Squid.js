@@ -13,8 +13,7 @@ class Squid extends Model {
          name: { type: "string", minLength: 1 },
          species: { type: "string", minLength: 1 },
          experiencePoints: { type: "integer" },
-         specialPower: {type: "string"}
-        //  array of possible values, maybe rails enum
+         specialPower: { type: "string", enum: ["ink", "camouflage", "bioluminescence"]}
        }
     }
   }

@@ -1,6 +1,6 @@
 import React from "react";
 
-export const SquidListTile = ({ name, species, experiencePoints, specialPower }) => (
+export const SquidListTile = ({ name }) => (
   <div>
     <p>Name: {name}</p>
   </div>
