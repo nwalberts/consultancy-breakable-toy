@@ -6,6 +6,7 @@ import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+// eslint-disable-next-line import/extensions
 import { Home } from "./home/Home.jsx";
 import { TopBar } from "./layout/TopBar";
 import { SquidList } from "./squids/SquidList";
@@ -19,7 +20,7 @@ const App = () => {
     bugs in development
   */
   const queryClient = new QueryClient({
-    defaultOptions: { queries: { retry: false, refetchOnWindowFocus: false } },
+    defaultOptions: { queries: { retry: false, refetchOnWindowFocus: false, staleTime: Infinity } },
   });
 
   return (

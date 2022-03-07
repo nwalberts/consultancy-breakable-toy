@@ -29,7 +29,6 @@ app.use(bodyParser.json());
 addMiddlewares(app);
 
 app.use(rootRouter);
-console.log()
 app.use(handleErrors)
 
 app.listen(config.web.port, config.web.host, () => {

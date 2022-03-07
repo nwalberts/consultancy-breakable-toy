@@ -4,7 +4,13 @@ import "../../style/home/home.pcss";
 
 export const Home = () => (
   <div className="home">
-    <h1> Welcome to Squid Central</h1>
-    <h1> Home of the dankest of rubbery-folk</h1>
+    <div className="home__box">
+      <h1 className="home__header">
+        Welcome to <span className="rainbow-text">Squid Central</span>
+      </h1>
+      <h3 className="home__sub-header">
+        Home of the <span className="rainbow-text">dankest</span> of rubbery-folk
+      </h3>
+    </div>
   </div>
 );

@@ -1,7 +1,5 @@
 import React from "react";
 
-export const SquidListTile = ({ name }) => (
-  <div>
-    <p>Name: {name}</p>
-  </div>
-);
+import "../../style/squids/squidTile.pcss";
+
+export const SquidListTile = ({ name }) => <h3 className="squid-tile">{name}</h3>;

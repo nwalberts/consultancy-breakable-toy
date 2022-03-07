@@ -18,7 +18,7 @@ export const SquidList = () => {
     squidListQuery.error.message
   ) : (
     <div className="squid-list">
-      <div>{squidTiles}</div>
+      {squidTiles}
 
       {squidListQuery.isFetching ? "Updating..." : null}
     </div>
