@@ -1,5 +1,5 @@
 /**
- * @typedef {import("knex")} Knex 
+ * @typedef {import("knex")} Knex
  */
 
 /**

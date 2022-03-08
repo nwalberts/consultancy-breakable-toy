@@ -1,2 +1,2 @@
-const Squid = require("./Squid.js")
+const Squid = require("./Squid.js");
 module.exports = { Squid };

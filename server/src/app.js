@@ -8,7 +8,7 @@ import logger from "morgan";
 import "./boot.js";
 import { config } from "./config.js";
 import { addMiddlewares } from "./middlewares/addMiddlewares.js";
-import { handleErrors} from "./middlewares/handleErrors.js"
+import { handleErrors } from "./middlewares/handleErrors.js";
 import { rootRouter } from "./routes/rootRouter.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 addMiddlewares(app);
 
 app.use(rootRouter);
-app.use(handleErrors)
+app.use(handleErrors);
 
 app.listen(config.web.port, config.web.host, () => {
   // eslint-disable-next-line no-console
