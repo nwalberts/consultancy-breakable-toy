@@ -1,6 +1,7 @@
 import React from "react";
 
 import "../../style/home/home.pcss";
+import "../../style/main.pcss";
 
 export const Home = () => (
   <div className="home">

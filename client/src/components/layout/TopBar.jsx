@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import "../../style/layouts/topBar.pcss";
-import "../../style/button/button.pcss";
+import "../common/styles/button.pcss";
 
 export const TopBar = () => (
   <div className="top-bar">
