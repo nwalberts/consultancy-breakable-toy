@@ -1,8 +1,9 @@
 import express from "express";
 
+import { apiRouter } from "./apiRouter.js";
 import { clientRouter } from "./clientRouter.js";
 
-const rootRouter = new express.Router();
-rootRouter.use("/", clientRouter);
+export const rootRouter = new express.Router();
 
-export { rootRouter };
+rootRouter.use("/api", apiRouter);
+rootRouter.use("/", clientRouter);

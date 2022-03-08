@@ -6,7 +6,9 @@ import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import { Home } from "./home/Home.jsx";
 import { TopBar } from "./layout/TopBar";
+import { SquidList } from "./squids/SquidList";
 import "../style/main.pcss";
 
 const App = () => {
@@ -17,7 +19,7 @@ const App = () => {
     bugs in development
   */
   const queryClient = new QueryClient({
-    defaultOptions: { queries: { retry: false, refetchOnWindowFocus: false } },
+    defaultOptions: { queries: { retry: false, refetchOnWindowFocus: false, staleTime: Infinity } },
   });
 
   return (
@@ -26,7 +28,10 @@ const App = () => {
         <TopBar />
         <Switch>
           <Route exact path="/">
-            <h2>Hello from react</h2>
+            <Home />
+          </Route>
+          <Route exact path="/squids">
+            <SquidList />
           </Route>
         </Switch>
       </Router>
