@@ -11,7 +11,8 @@ exports.up = async (knex) => {
     table.string("name").notNullable();
     table.string("species").notNullable();
     table.string("experiencePoints").defaultTo(0).notNullable();
-    table.enu("specialPower", ["ink", "bioluminescence", "camouflage", null]);
+    table.enu("specialPower", ["ink", "camouflage", "bioluminescence", "flight", null]);
+    table.string("imageUrl");
     table.timestamp("createdAt").notNullable().defaultTo(knex.fn.now());
     table.timestamp("updatedAt").notNullable().defaultTo(knex.fn.now());
   });

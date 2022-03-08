@@ -7,7 +7,8 @@ export class SquidSeeder {
     console.log("Seeding squids...");
 
     try {
-      await new Factory(Squid).createMany(3);
+      await Squid.query().delete();
+      await new Factory(Squid).createMany(40);
     } catch (error) {
       // eslint-disable-next-line no-console
       console.log("Error while seeding", error);
