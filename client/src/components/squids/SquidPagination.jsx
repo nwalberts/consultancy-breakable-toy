@@ -8,9 +8,11 @@ import "../../style/squids/squidPagination.pcss";
 export const SquidPagination = ({ currentPageNumber, numberOfPages }) => {
   const pageLinks = Array.from({ length: numberOfPages }).map((nonValue, index) =>
     index + 1 === currentPageNumber ? (
-      <span className="pagination__current-page">{index + 1}</span>
+      <span key={index} className="pagination__current-page">
+        {index + 1}
+      </span>
     ) : (
-      <Link className="pagination__number" to={`/squids?pageNumber=${index + 1}`}>
+      <Link key={index} className="pagination__number" to={`/squids?pageNumber=${index + 1}`}>
         {index + 1}
       </Link>
     )
