@@ -19,7 +19,7 @@ export const TopBar = () => (
 
       <div className="menu__right">
         <li className="menu__item button">
-          <Link to="/squids?pageNumber=1">Squids</Link>
+          <Link to="/squids">Squids</Link>
         </li>
       </div>
     </ul>

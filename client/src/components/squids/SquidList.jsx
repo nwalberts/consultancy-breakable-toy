@@ -1,5 +1,6 @@
 import React from "react";
 
+import { useGetSearchParams } from "../hooks/useGetSearchParams";
 import { useSquidList } from "../hooks/useSquidList";
 import { SquidListTile } from "./SquidListTile";
 import { SquidPagination } from "./SquidPagination";
@@ -11,7 +12,7 @@ export const SquidList = (props) => {
     location: { search },
   } = props;
 
-  const pageNumber = parseInt(new URLSearchParams(search).get("pageNumber"), 10);
+  const pageNumber = useGetSearchParams(search);
 
   const { data, isLoading, isFetching, isError, error } = useSquidList(pageNumber);
   const squids = data?.squidsData || [];
