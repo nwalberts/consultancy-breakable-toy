@@ -8,7 +8,17 @@ export const squidsRouter = new express.Router();
 squidsRouter.get(
   "/",
   nextWrapper(async (req, res) => {
-    const squids = await Squid.query().orderBy("createdAt", "desc");
-    res.status(200).json({ squids });
+    const pageNumber = req.query.pageNumber - 1;
+    const resultsPerPage = 10;
+
+    const squidsQueryData = await Squid.query()
+      .orderBy([
+        { column: "createdAt", order: "asc" },
+        { column: "id", order: "asc" },
+      ])
+      .page(pageNumber, resultsPerPage);
+    const pages = Math.ceil(squidsQueryData.total / resultsPerPage);
+
+    res.status(200).json({ squidsQueryResults: { squidsData: squidsQueryData.results, pages } });
   })
 );

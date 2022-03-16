@@ -1,13 +1,22 @@
 import React from "react";
 
+import { useGetSearchParams } from "../hooks/useGetSearchParams";
 import { useSquidList } from "../hooks/useSquidList";
 import { SquidListTile } from "./SquidListTile";
+import { SquidPagination } from "./SquidPagination";
 
 import "../../style/squids/squidList.pcss";
 
-export const SquidList = () => {
-  const { data, isLoading, isFetching, isError, error } = useSquidList();
-  const squids = data || [];
+export const SquidList = (props) => {
+  const {
+    location: { search },
+  } = props;
+
+  const pageNumber = useGetSearchParams(search);
+
+  const { data, isLoading, isFetching, isError, error } = useSquidList(pageNumber);
+  const squids = data?.squidsData || [];
+  const pages = data?.pages || 1;
 
   const squidTiles = squids.map((squid) => <SquidListTile key={squid.id} {...squid} />);
 
@@ -17,10 +26,11 @@ export const SquidList = () => {
   ) : isError ? (
     error.message
   ) : (
-    <div className="squid-page">
+    <div className="squid-page page-body">
       <div className="squid-list">{squidTiles}</div>
 
       {isFetching ? "Updating..." : null}
+      <SquidPagination currentPageNumber={pageNumber} numberOfPages={pages} />
     </div>
   );
 };
