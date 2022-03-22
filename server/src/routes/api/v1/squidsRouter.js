@@ -13,7 +13,10 @@ squidsRouter.get(
     const resultsPerPage = 10;
 
     const squidsQueryData = await Squid.query()
-      .orderBy("id", "asc")
+      .orderBy([
+        { column: "createdAt", order: "asc" },
+        { column: "id", order: "asc" },
+      ])
       .page(pageNumber, resultsPerPage);
     const pages = Math.ceil(squidsQueryData.total / resultsPerPage);
 

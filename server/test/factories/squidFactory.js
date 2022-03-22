@@ -1,6 +1,7 @@
 import { Factory } from "rosie";
 
 import { Squid } from "../../src/models/index.js";
+import { getRandomInteger } from "../utils/getRandomInteger.js";
 
 const squidNames = ["Terri", "Remi", "Anastasia", "Firas", "Griffin", "Mariel", "Dustin", "Adrian"];
 
@@ -23,11 +24,12 @@ const squidSpecies = [
   "Dana Octopus Squid",
   "Flying Squid",
 ];
+
 Factory.define("Squid", Squid)
-  .sequence("name", () => `${squidNames[Math.floor(Math.random() * squidNames.length)]}`)
-  .sequence("species", () => squidSpecies[Math.floor(Math.random() * squidSpecies.length)])
-  .sequence("experiencePoints", () => Math.floor(Math.random() * 10))
-  .sequence("specialPower", () => specialPowers[Math.floor(Math.random() * specialPowers.length)])
-  .sequence("imageUrl", () => imageUrls[Math.floor(Math.random() * imageUrls.length)]);
+  .sequence("name", () => `${squidNames[getRandomInteger(squidNames.length)]}`)
+  .sequence("species", () => `${squidSpecies[getRandomInteger(squidSpecies.length)]}`)
+  .sequence("experiencePoints", () => getRandomInteger(10))
+  .sequence("specialPower", () => specialPowers[getRandomInteger(specialPowers.length)])
+  .sequence("imageUrl", () => imageUrls[getRandomInteger(imageUrls.length)]);
 
 export { Factory };

@@ -18,9 +18,9 @@ export const TopBar = () => (
       </div>
 
       <div className="menu__right">
-        <Link to="/squids?pageNumber=1">
-          <li className="menu__item button">Squids</li>
-        </Link>
+        <li className="menu__item button">
+          <Link to="/squids">Squids</Link>
+        </li>
       </div>
     </ul>
   </div>
