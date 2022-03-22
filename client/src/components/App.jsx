@@ -30,9 +30,7 @@ const App = () => {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/squids">
-            <SquidList />
-          </Route>
+          <Route exact path="/squids" component={SquidList} />
         </Switch>
       </Router>
       <ReactQueryDevtools initialIsOpen={false} />
