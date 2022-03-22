@@ -5,6 +5,7 @@ import { SquidSeeder } from "./SquidSeeder.js";
 export class Seeder {
   static async seed() {
     const seederClasses = [SquidSeeder];
+    // eslint-disable-next-line no-console
     console.log("Seeding...");
 
     await Promise.all(seederClasses.map((c) => c.seed()));

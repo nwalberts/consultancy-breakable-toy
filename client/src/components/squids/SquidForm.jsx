@@ -23,19 +23,29 @@ export const SquidForm = ({ setRefreshMessage, setFormSuccess, formSuccess }) =>
       experiencePoints: 0,
     },
   });
-  const postSquidMutation = usePostSquidMutation({ setRefreshMessage, reset });
+  const postSquidMutation = usePostSquidMutation();
 
   const onSubmit = async (data) => {
-    postSquidMutation.mutate(data);
+    postSquidMutation.mutate(data, {
+      onSettled: () => {
+        setRefreshMessage(true);
+        reset();
+      },
+      onError: () => {
+        // eslint-disable-next-line no-console
+        console.log("Something went wrong. Please refresh.");
+      },
+    });
     setFormSuccess(true);
   };
 
+  const specialPowers = ["ink", "camouflage", "bioluminescence", "flight"];
   const specialPowerSelectOptions = [
     { value: null, label: "" },
-    { value: "ink", label: "ink" },
-    { value: "camouflage", label: "camouflage" },
-    { value: "bioluminescence", label: "bioluminescence" },
-    { value: "flight", label: "flight" },
+    ...specialPowers.map((power) => ({
+      value: power,
+      label: power,
+    })),
   ];
 
   const optionsForSpecialPowerSelect = specialPowerSelectOptions.map(
@@ -61,7 +71,6 @@ export const SquidForm = ({ setRefreshMessage, setFormSuccess, formSuccess }) =>
           <label htmlFor="name">
             <input
               type="text"
-              name="name"
               className="input-area__field"
               placeholder="Squid Name"
               {...register("name", {
@@ -76,7 +85,6 @@ export const SquidForm = ({ setRefreshMessage, setFormSuccess, formSuccess }) =>
             <input
               type="text"
               className="input-area__field"
-              name="species"
               placeholder="Species"
               {...register("species", {
                 required: "Add your squid's species",
@@ -91,7 +99,6 @@ export const SquidForm = ({ setRefreshMessage, setFormSuccess, formSuccess }) =>
             <input
               type="number"
               className="input-area__field"
-              name="experiencePoints"
               min="0"
               placeholder="Experience Points"
               {...register("experiencePoints")}
@@ -103,8 +110,6 @@ export const SquidForm = ({ setRefreshMessage, setFormSuccess, formSuccess }) =>
             <select
               {...register("specialPower")}
               className="input-area__field"
-              name="specialPower"
-              id="specialPower"
               placeholder="Special Power"
             >
               {optionsForSpecialPowerSelect}
@@ -115,7 +120,6 @@ export const SquidForm = ({ setRefreshMessage, setFormSuccess, formSuccess }) =>
           <label htmlFor="imageUrl">
             <input
               type="text"
-              name="imageUrl"
               className="input-area__field"
               placeholder="Image URL"
               {...register("imageUrl")}

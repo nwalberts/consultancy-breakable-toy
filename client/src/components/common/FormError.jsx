@@ -5,12 +5,12 @@ import { ErrorMessage } from "@hookform/error-message";
 import "./styles/formError.pcss";
 
 const errorComponentHandler = ({ message, messages }) => {
-  let theMessage = message;
+  let displayMessage = message;
   if (messages && messages.length > 0) {
-    theMessage = messages.map((error) => error.message).join(", ");
+    displayMessage = messages.map((error) => error.message).join(", ");
   }
-  if (theMessage) {
-    return <p className="error">{theMessage}</p>;
+  if (displayMessage) {
+    return <p className="error">{displayMessage}</p>;
   }
   return null;
 };
