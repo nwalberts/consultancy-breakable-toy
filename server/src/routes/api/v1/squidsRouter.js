@@ -22,3 +22,14 @@ squidsRouter.get(
     res.status(200).json({ squidsQueryResults: { squidsData: squidsQueryData.results, pages } });
   })
 );
+
+squidsRouter.get(
+  "/:id",
+  nextWrapper(async (req, res) => {
+    const id = req.params.id;
+
+    const squid = await Squid.query().findById(65);
+
+    res.status(200).json({ squid });
+  })
+);

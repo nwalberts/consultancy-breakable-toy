@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Home } from "./home/Home.jsx";
 import { TopBar } from "./layout/TopBar";
 import { SquidList } from "./squids/SquidList";
+import { SquidDetailsPage } from "./squids/SquidDetailsPage";
 import "../style/main.pcss";
 
 const App = () => {
@@ -29,6 +30,9 @@ const App = () => {
         <Switch>
           <Route exact path="/">
             <Home />
+          </Route>
+          <Route exact path="/squids/:id">
+            <SquidDetailsPage />
           </Route>
           <Route exact path="/squids" component={SquidList} />
         </Switch>

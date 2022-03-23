@@ -1,9 +1,8 @@
-import { string } from "prop-types";
 import React from "react";
 
-import "../../style/squids/squidTile.pcss";
+import "../../style/squids/squidListTile.pcss";
 
-interface Props {
+interface SquidListTileProps {
   name: string;
   species: string;
   experiencePoints?: number;
@@ -11,20 +10,29 @@ interface Props {
   imageUrl?: string;
 }
 
-// interface Person {
-//   firstName: string;
-//   lastName: string;
-// }
+export const SquidListTile: React.FC<SquidListTileProps> = ({
+  name,
+  species,
+  experiencePoints,
+  specialPower,
+  imageUrl,
+}) => (
+  <div className="squid-list-tile">
+    <div className="squid-attributes">
+      <div className="squid-attribute">
+        <h3 className="squid-attributes__name">{name}</h3>
+      </div>
+      <div className="squid-attribute">
+        <span className="squid-attribute__key">Species:</span> {species}
+      </div>
 
-// interface Props {
-//   text: string;
-//   ok: boolean;
-//   i: number;
-//   fn: (name: string) => string;
-//   obj: {
-//     f1: string;
-//   };
-//   person: Person
-// }
-
-export const SquidListTile: React.FC<Props> = ({ name }) => <h3 className="squid-tile">{name}</h3>;
+      <div className="squid-attribute">
+        <span className="squid-attribute__key">Experience Points:</span> {experiencePoints}
+      </div>
+      <div className="squid-attribute">
+        <span className="squid-attribute__key">Special Power:</span> {specialPower}
+      </div>
+    </div>
+    <img className="squid-list-tile__image" src={imageUrl} alt={`${name} ${species}`} />
+  </div>
+);
