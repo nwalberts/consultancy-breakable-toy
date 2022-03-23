@@ -3,6 +3,8 @@ import { RouteComponentProps, useParams } from "react-router-dom";
 
 import { useGetSearchParams } from "../hooks/useGetSearchParams";
 import { useSquidList } from "../hooks/useSquidList";
+import { SquidResetButton } from "./SquidResetButton.jsx";
+import { SquidForm } from "./SquidForm.jsx";
 import { SquidListTile } from "./SquidListTile";
 import { SquidPagination } from "./SquidPagination";
 
@@ -20,6 +22,10 @@ export const SquidList: React.FC = ({ location: { search } }) => {
 
   const squidTiles = squids.map((squid) => <SquidListTile key={squid.id} {...squid} />);
 
+  const [refreshMessage, setRefreshMessage] = useState(false);
+
+  const [formSuccess, setFormSuccess] = useState(false);
+
   // eslint-disable-next-line no-nested-ternary
   return isLoading ? (
     "Loading..."
@@ -27,8 +33,17 @@ export const SquidList: React.FC = ({ location: { search } }) => {
     error.message
   ) : (
     <div className="squid-page page-body">
-      <div className="squid-list">{squidTiles}</div>
+      <SquidForm
+        setRefreshMessage={setRefreshMessage}
+        setFormSuccess={setFormSuccess}
+        formSuccess={formSuccess}
+      />
 
+      {refreshMessage ? (
+        <SquidResetButton setRefreshMessage={setRefreshMessage} setFormSuccess={setFormSuccess} />
+      ) : null}
+
+      <div className="squid-list"> {squidTiles} </div>
       {isFetching ? "Updating..." : null}
       <SquidPagination currentPageNumber={pageNumber} numberOfPages={pages} />
     </div>

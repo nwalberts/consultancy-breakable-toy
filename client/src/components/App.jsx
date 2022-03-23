@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { Home } from "./home/Home.jsx";
 import { TopBar } from "./layout/TopBar";
+import { SquidForm } from "./squids/SquidForm";
 import { SquidList } from "./squids/SquidList";
 import { SquidDetailsPage } from "./squids/SquidDetailsPage";
 import "../style/main.pcss";
