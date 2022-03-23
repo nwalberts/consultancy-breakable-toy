@@ -16,9 +16,13 @@ export const SquidListTile = ({ name, species, experiencePoints, specialPower, i
         <span className="squid-attribute__key">Experience Points:</span> {experiencePoints}
       </div>
       <div className="squid-attribute">
-        <span className="squid-attribute__key">Special Power:</span> {specialPower}
+        <span className="squid-attribute__key">Special Power:</span> {specialPower || "None"}
       </div>
     </div>
-    <img className="squid-list-tile__image" src={imageUrl} alt={`${name} ${species}`} />
+    <img
+      className="squid-list-tile__image"
+      src={imageUrl || "https://icon-library.com/images/squid-icon/squid-icon-15.jpg"}
+      alt={`${name} ${species}`}
+    />
   </div>
 );

@@ -1,5 +1,6 @@
 import express from "express";
 
+import { cleanUserInput } from "../../../services/cleanUserInput.js";
 import { nextWrapper } from "../../lib/nextWrapper.js";
 import { Squid } from "./../../../models/index.js";
 
@@ -20,5 +21,14 @@ squidsRouter.get(
     const pages = Math.ceil(squidsQueryData.total / resultsPerPage);
 
     res.status(200).json({ squidsQueryResults: { squidsData: squidsQueryData.results, pages } });
+  })
+);
+
+squidsRouter.post(
+  "/",
+  nextWrapper(async (req, res) => {
+    const cleanedSquidData = cleanUserInput(req.body.squid);
+    await Squid.query().insert({ ...cleanedSquidData });
+    return res.status(200).json({});
   })
 );

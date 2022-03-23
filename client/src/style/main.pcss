@@ -10,6 +10,14 @@
     line-height: 24px;
   }
 
+  /* this was SO ANNOYING. Something in base Tailwind css sets bg-color to transparent and I had so much frustrating overriding it. hence this...but I want a more appropriate solution */
+  button,
+  [type="button"],
+  [type="reset"],
+  [type="submit"] {
+    @apply bg-amber-500;
+  }
+
   h1 {
     @apply text-4xl;
   }
