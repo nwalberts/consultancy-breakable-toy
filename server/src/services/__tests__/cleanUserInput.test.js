@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { cleanUserInput } from "../cleanUserInput";
 
 describe("#cleanUserInput", () => {
