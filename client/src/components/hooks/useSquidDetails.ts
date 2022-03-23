@@ -3,8 +3,8 @@ import { AxiosError } from "axios";
 
 import { ApiClient } from "../../backend/ApiClient";
 
-// DRY and re-use for multiple interfaces
-interface Squid {
+interface SquidInterface {
+  birthday: string;
   name: string;
   species: string;
   experiencePoints?: number;
@@ -12,9 +12,13 @@ interface Squid {
   imageUrl?: string;
 }
 
-export const useSquidDetails = (id): UseQueryResult<Squid, AxiosError> =>
+interface ResponseInterface {
+  data: { squid: SquidInterface };
+}
+
+export const useSquidDetails = (id: string): UseQueryResult<SquidInterface, AxiosError> =>
   useQuery(["squid", { id }], () =>
-    ApiClient.get(`/squids/${id}`).then((response) => response.data.squid, {
+    ApiClient.get(`squids/${id}`).then((response: ResponseInterface) => response.data.squid, {
       keepPreviousData: true,
     })
   );

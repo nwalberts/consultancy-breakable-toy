@@ -2,10 +2,18 @@ import React from "react";
 
 import { useQueryClient } from "react-query";
 
-export const SquidResetButton = ({ setRefreshMessage, setFormSuccess }) => {
+interface SquidPaginationProps {
+  setRefreshMessage: React.Dispatch<React.SetStateAction<boolean>>;
+  setFormSuccess: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const SquidResetButton: React.FC<SquidPaginationProps> = ({
+  setRefreshMessage,
+  setFormSuccess,
+}) => {
   const queryClient = useQueryClient();
 
-  const handleRefreshButtonClick = () => {
+  const handleRefreshButtonClick: () => void = () => {
     queryClient.invalidateQueries("squids");
     setRefreshMessage(false);
     setFormSuccess(false);

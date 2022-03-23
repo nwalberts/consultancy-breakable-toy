@@ -29,8 +29,7 @@ squidsRouter.get(
   nextWrapper(async (req, res) => {
     const id = req.params.id;
 
-    const squid = await Squid.query().findById(65);
-
+    const squid = await Squid.query().findById(id);
     res.status(200).json({ squid });
   })
 );

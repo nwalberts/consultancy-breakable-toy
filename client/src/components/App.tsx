@@ -13,7 +13,7 @@ import { SquidList } from "./squids/SquidList";
 import { SquidDetailsPage } from "./squids/SquidDetailsPage";
 import "../style/main.pcss";
 
-const App = () => {
+const App: React.FC = () => {
   /*
   Defaults:
   - retry: false because we don't want to retry on network errors

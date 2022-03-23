@@ -2,7 +2,7 @@ import React from "react";
 
 import "../../style/home/home.pcss";
 
-export const Home = () => (
+export const Home: React.FC = () => (
   <div className="home page-body">
     <div className="home__box">
       <h1 className="home__header">

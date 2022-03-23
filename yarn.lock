@@ -11230,6 +11230,11 @@ side-channel@^1.0.4:
     get-intrinsic "^1.0.2"
     object-inspect "^1.9.0"
 
+sign-teller@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/sign-teller/-/sign-teller-3.2.2.tgz#588227642b07a7b70da8bbe14cedd2fbda891c4e"
+  integrity sha512-UM0yNlm8nn4PMqK16gwdHc/2I4QGzWT/Sne+eczjLO82mg+uxOSeT3oLlA/ZcagZYDv1/pE2esW3fL97V2JawA==
+
 signal-exit@^3.0.0, signal-exit@^3.0.2, signal-exit@^3.0.3:
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.6.tgz#24e630c4b0f03fea446a2bd299e62b4a6ca8d0af"

@@ -12,20 +12,41 @@ import { useForm } from "react-hook-form";
 import { FormError } from "../common/FormError";
 import { usePostSquidMutation } from "../hooks/usePostSquidMutation";
 
-export const SquidForm = ({ setRefreshMessage, setFormSuccess, formSuccess }) => {
+interface SquidFormProps {
+  setRefreshMessage: React.Dispatch<React.SetStateAction<boolean>>;
+  setFormSuccess: React.Dispatch<React.SetStateAction<boolean>>;
+  formSuccess: boolean;
+}
+
+interface SquidFormDataInterface {
+  experiencePoints: number;
+  name: string;
+  species: string;
+  specialPower: string;
+  imageUrl: string;
+}
+
+export const SquidForm: React.FC<SquidFormProps> = ({
+  setRefreshMessage,
+  setFormSuccess,
+  formSuccess,
+}) => {
   const {
     handleSubmit,
     register,
     formState: { errors },
     reset,
-  } = useForm({
+  } = useForm<SquidFormDataInterface>({
     defaultValues: {
       experiencePoints: 0,
     },
   });
+
   const postSquidMutation = usePostSquidMutation();
 
-  const onSubmit = async (data) => {
+  // {experiencePoints: 0, name: 'test', species: 'test', specialPower: '', imageUrl: ''}
+
+  const onSubmit = async (data: SquidFormDataInterface) => {
     postSquidMutation.mutate(data, {
       onSettled: () => {
         setRefreshMessage(true);
@@ -39,8 +60,8 @@ export const SquidForm = ({ setRefreshMessage, setFormSuccess, formSuccess }) =>
     setFormSuccess(true);
   };
 
-  const specialPowers = ["ink", "camouflage", "bioluminescence", "flight"];
-  const specialPowerSelectOptions = [
+  const specialPowers: string[] = ["ink", "camouflage", "bioluminescence", "flight"];
+  const specialPowerSelectOptions: { value: string | null; label: string }[] = [
     { value: null, label: "" },
     ...specialPowers.map((power) => ({
       value: power,
@@ -48,7 +69,7 @@ export const SquidForm = ({ setRefreshMessage, setFormSuccess, formSuccess }) =>
     })),
   ];
 
-  const optionsForSpecialPowerSelect = specialPowerSelectOptions.map(
+  const optionsForSpecialPowerSelect: JSX.Element[] = specialPowerSelectOptions.map(
     (specialPowerOptionData, index) => (
       <option key={index} value={specialPowerOptionData.value}>
         {specialPowerOptionData.label}
