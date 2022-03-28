@@ -6,7 +6,7 @@ import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { Home } from "./home/Home.jsx";
+import { Home } from "./home/Home";
 import { TopBar } from "./layout/TopBar";
 import { SquidForm } from "./squids/SquidForm";
 import { SquidList } from "./squids/SquidList";

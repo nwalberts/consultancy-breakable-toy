@@ -11,19 +11,12 @@ import { useForm } from "react-hook-form";
 
 import { FormError } from "../common/FormError";
 import { usePostSquidMutation } from "../hooks/usePostSquidMutation";
+import { SquidFormDataInterface } from "../../models/SquidFormDataInterface";
 
 interface SquidFormProps {
   setRefreshMessage: React.Dispatch<React.SetStateAction<boolean>>;
   setFormSuccess: React.Dispatch<React.SetStateAction<boolean>>;
   formSuccess: boolean;
-}
-
-interface SquidFormDataInterface {
-  experiencePoints: number;
-  name: string;
-  species: string;
-  specialPower: string;
-  imageUrl: string;
 }
 
 export const SquidForm: React.FC<SquidFormProps> = ({
@@ -38,13 +31,11 @@ export const SquidForm: React.FC<SquidFormProps> = ({
     reset,
   } = useForm<SquidFormDataInterface>({
     defaultValues: {
-      experiencePoints: 0,
+      experiencePoints: "0",
     },
   });
 
   const postSquidMutation = usePostSquidMutation();
-
-  // {experiencePoints: 0, name: 'test', species: 'test', specialPower: '', imageUrl: ''}
 
   const onSubmit = async (data: SquidFormDataInterface) => {
     postSquidMutation.mutate(data, {

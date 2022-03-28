@@ -3,16 +3,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../../style/squids/squidListTile.pcss";
 
-interface SquidListTileProps {
-  id: number;
-  name: string;
-  species: string;
-  experiencePoints?: number;
-  specialPower?: string;
-  imageUrl?: string;
-}
+import { Squid } from "../../models/Squid.d";
 
-export const SquidListTile: React.FC<SquidListTileProps> = ({
+export const SquidListTile: React.FC<Squid> = ({
   id,
   name,
   species,

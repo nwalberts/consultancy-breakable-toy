@@ -1,22 +1,15 @@
-import { useQuery, UseQueryResult } from "react-query";
 import { AxiosError } from "axios";
+import { useQuery, UseQueryResult } from "react-query";
 
 import { ApiClient } from "../../backend/ApiClient";
-interface SquidInterface {
-  id: number;
-  name: string;
-  species: string;
-  experiencePoints?: number;
-  specialPower?: string;
-  imageUrl?: string;
-}
+import { Squid } from "../../models/Squid.d";
 
 interface useSquidResponseInterface {
-  squidsData: SquidInterface[];
+  squidsData: Squid[];
   pages: number;
 }
 interface ResponseInterface {
-  data: { squidsQueryResults: SquidInterface[] };
+  data: { squidsQueryResults: Squid[] };
 }
 
 export const useSquidList = (
