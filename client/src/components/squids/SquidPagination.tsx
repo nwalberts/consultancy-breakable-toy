@@ -5,7 +5,15 @@ import { Link } from "react-router-dom";
 
 import "../../style/squids/squidPagination.pcss";
 
-export const SquidPagination = ({ currentPageNumber, numberOfPages }) => {
+interface SquidPaginationProps {
+  currentPageNumber: number;
+  numberOfPages: number;
+}
+
+export const SquidPagination: React.FC<SquidPaginationProps> = ({
+  currentPageNumber,
+  numberOfPages,
+}) => {
   const pageLinks = Array.from({ length: numberOfPages }).map((nonValue, index) =>
     index + 1 === currentPageNumber ? (
       <span key={index} className="pagination__current-page">

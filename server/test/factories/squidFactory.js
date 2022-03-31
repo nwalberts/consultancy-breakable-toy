@@ -1,6 +1,7 @@
 import { Factory } from "rosie";
 
 import { Squid } from "../../src/models/index.js";
+import { getRandomDate } from "../utils/getRandomDate.js";
 import { getRandomInteger } from "../utils/getRandomInteger.js";
 
 const squidNames = ["Terri", "Remi", "Anastasia", "Firas", "Griffin", "Mariel", "Dustin", "Adrian"];
@@ -30,6 +31,7 @@ Factory.define("Squid", Squid)
   .sequence("species", () => `${squidSpecies[getRandomInteger(squidSpecies.length)]}`)
   .sequence("experiencePoints", () => getRandomInteger(10))
   .sequence("specialPower", () => specialPowers[getRandomInteger(specialPowers.length)])
-  .sequence("imageUrl", () => imageUrls[getRandomInteger(imageUrls.length)]);
+  .sequence("imageUrl", () => imageUrls[getRandomInteger(imageUrls.length)])
+  .sequence("birthday", () => getRandomDate());
 
 export { Factory };

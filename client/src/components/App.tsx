@@ -6,13 +6,14 @@ import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { Home } from "./home/Home.jsx";
+import { Home } from "./home/Home";
 import { TopBar } from "./layout/TopBar";
 import { SquidForm } from "./squids/SquidForm";
 import { SquidList } from "./squids/SquidList";
+import { SquidDetailsPage } from "./squids/SquidDetailsPage";
 import "../style/main.pcss";
 
-const App = () => {
+const App: React.FC = () => {
   /*
   Defaults:
   - retry: false because we don't want to retry on network errors
@@ -30,6 +31,9 @@ const App = () => {
         <Switch>
           <Route exact path="/">
             <Home />
+          </Route>
+          <Route exact path="/squids/:id">
+            <SquidDetailsPage />
           </Route>
           <Route exact path="/squids" component={SquidList} />
         </Switch>
